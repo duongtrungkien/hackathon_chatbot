@@ -45,7 +45,7 @@ class ValidateNewSupplierForm(FormValidationAction):
     def check_number_input(input):
         correct = True
         try:
-            int(input)
+            float(input)
         except ValueError:
             correct = False
         return correct
@@ -166,10 +166,10 @@ class ActionSubmitExamForm(Action):
             point = point + 1
         if point <= 3:
             dispatcher.utter_message(
-                text="Sinulla on {}/5. Et läpäissyt testiä. Lue asiakirja uudelleen".format(point))
+                text="Sait {}/5 pistettä. Et läpäissyt testiä. Lue asiakirja uudelleen".format(point))
         if point > 3:
             dispatcher.utter_message(
-                text="Onnittelut! Sinulla on {}/5. Olet läpäissyt testin.".format(point))
+                text="Onnittelut! Sait {}/5 pistettä. Olet läpäissyt testin.".format(point))
         return_events = [SlotSet("1_milloin_aamustartti_alkaa", None), SlotSet("2_kuka_vetää_aamustartin", None), SlotSet(
             "3_Mille_Neptonin_taskille", None), SlotSet("4_Saako_lounaalle", None), SlotSet("5_Saako_saapuneet_kansioon", None)]
         return return_events
@@ -199,7 +199,7 @@ class ActionSubmitNewSupplierForm(Action):
         write_book.save(
             "/Users/kien1/Documents/Projects/hackathon_demo/instructions/Toimittajan_perustietolomake_2020.xls")
         dispatcher.utter_message(
-            text="Lomake on tallennettu. [Lataa tästä napsauttamalla tätä](https://8f31d4c87743.ngrok.io/Toimittajan_perustietolomake_2020.xls)")
+            text="Lomake on tallennettu. [Lataa se itsellesi napsauttamalla tätä](https://8f31d4c87743.ngrok.io/Toimittajan_perustietolomake_2020.xls)")
         message = "Haluatko tallentaa tämän lomakkeen?"
         buttons = [{'title': 'Joo',
                     'payload': '/save_new_supplier_form'},
@@ -217,7 +217,7 @@ class ActionDeleteNewSupplierForm(Action):
 
     def run(self, dispatcher, tracker, domain):
 
-        message = "Kiitos. Puhdistan lomakkeen sinulle. Haluatko täyttää lomakkeen uudelleen?"
+        message = "Kiitos. Tyhjennän lomakkeen. Haluatko täyttää lomakkeen uudelleen?"
         buttons = [{'title': 'Joo',
                     'payload': '/activate_new_supplier_form'},
                    {'title': 'Ey',

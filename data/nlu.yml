@@ -226,26 +226,63 @@ nlu:
     - Miten voin tehdä verkkokaupan tunnuspyynnön?
     - Miten saan tunnukset verkkokauppaan?
     - Tarvitsen verkkokauppatunnukset.
-    - Mistä saan tunnuksen verkkokauppaan?                        
+    - Mistä saan tunnuksen verkkokauppaan?    
+- intent: ask_general_instructions    
+  examples: |
+    - Voitko antaa minulle tietoa yleisistä ohjeista?
+    - Mistä löydän tietoa yleisistä ohjeista?
+    - Mistä löydän yleiset ohjeet?
+    - Tarvitsisin yleisiä ohjeita.
+    - Onko olemassa yleisiä ohjeita?                    
 - intent: activate_new_supplier_form
   examples: |
     - haluan täyttää uuden toimittajan perustietolomakkeen
+    - Haluaisin täyttää uuden toimittajan perustietolomakkeen.
+    - Mistä löydän uuden toimittajan perustietolomakkeen täytettäväksi?
+    - Onko lomaketta, johon voin täyttää uuden toimittajan perustiedot?
+    - Haluan täyttää uuden toimittajan perustietolomakkeen.
+    - Voitko antaa minulle uuden toimittajan perustietolomakkeen täytettäväksi?
+    - En löydä perustietolomaketta johon voin täyttää uuden toimittajan tiedot.
 - intent: show_options
   examples: |
+    - Mitä vaihtoehtoja on?
+    - Saanko kysyä mitkä ovat vaihtoehdot?
+    - Mitä erilaisia vaihtoehtoja löytyy?
+    - Voitko antaa minulle vaihtoehtoja?
     - Mitä vaihtoehtoja voin kysyä?
-    - auta  
+    - Mitkä ovat vaihtoehdot, joita voin kysyä?
 - intent: ask_new_employee
   examples: |
-    - Olen uusi työntekijä. Haluan tutustua asiakaspalvelun edustajan tehtäviin.
+    - Olen uusi työntekijä ja haluan tutustua asiakaspalvelun edustajan tehtäviin.
+    - Olen uusi työntekijä, voitko kertoa minulle asiakaspalvelun edustajan tehtävistä?
+    - Olen uusi työntekijä, mistä löydän tietoa asiakaspalvelun edustajan tehtävistä?
+    - Olen vasta aloittanut työt. Voitko esitellä minulle asiakaspalvelun edustajan työtehtäviä?
+    - Minä olen uusi työntekijä ja tarvitsen jonkun esittelemään minulle tehtäväni.
 - intent: activate_exam_form
   examples: |
-    - Haluan suorittaa kokeen uudelle työntekijälle 
+    - Haluan suorittaa kokeen uudelle työntekijälle.
+    - Haluan suorittaa testin uudelle työntekijälle.
+    - Miten voin suorittaa kokeen uudelle työntekijälle?
+    - Voinko suorittaa kokeen uudelle työntekijälle?
+    - Minulla on uusi työntekijä, jonka haluan suorittavan kokeen.
 - intent: central_product_complain
   examples: |
-    - Miten teen reklamaation keskustavaratuoteelle?   
+    - Miten teen reklamaation keskustavaratuotteesta?
+    - Haluaisin tehdä reklamaation keskustavaratuotteesta.
+    - Miten teen reklamaation, joka koskee keskustavaratuotetta.
+    - Haluan tehdä reklamaation koskien keskustavaratuotetta.
+    - Minun pitää tehdä reklamaatio keskustavaratuotteelle.
 - intent: return_transit_product
   examples: |
     - Miten teen tuotepalautuksen kauttakulkutuotteelle?
+    - Voinko tehdä palautuksen kauttakulkutuotteelle?
+    - Minun pitäisi tehdä tuotepalautus kauttakulkutuotteesta.
+    - Miten palautan kauttakulkutuotteen?
+    - Miten tuotepalautus tehdään kauttakulkutuotteen tapauksessa?
 - intent: receive_direct_delivery_product   
   examples: |
-    - Mitä minun pitää huomioida suoratoimitustuotteen vastaanottamisesta?
+    - Mitä minun pitää huomioida suoratoimitustuotteen vastaanottamisessa?
+    - Miten vastaanotan suoratoimitustuotteen?
+    - Mitä minun on huomioitava kun vastaanotan suoratoimitustuotteen?
+    - Olen vastaanottamassa suoratoimitustuotetta, miten toimin?
+    - Minun pitää vastaanottaa suoratoimitustuote.

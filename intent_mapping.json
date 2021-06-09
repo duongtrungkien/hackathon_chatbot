@@ -29,5 +29,12 @@
     "ask_purchase_transfer_invoice": "laskun voi siirtää uudelle hyväksyjälle",
     "ask_purchase_invoice_status": "laskun tila",
     "ask_purchase_has_invoice_arrived_espoo": ": Onko lasku saapunut Espoon kaupungille?",
-    "ask_purchase_foreign_landing": "ulkomaalainen lasku"
+    "ask_purchase_foreign_landing": "ulkomaalainen lasku",
+    "ask_supply_chain": "toimitusketjusta",
+    "ask_supply_chain_catering_front_office": "Catering front office ohje",
+    "ask_supply_chain_complaints_products": "reklamaation varaston kautta tilatuista tuotteista",
+    "ask_supply_chain_login_e_shop_supply_orders_delivery_methods": "verkkokaupan tarviketilauksien toimitustavat",
+    "ask_supply_chain_posti's_trolleys": "Espoon kaupungin yksiköihin jääneet Postin rullakot ja kuorma lavat",
+    "ask_supply_chain_login_e_shop_id": "tunnukset verkkokauppaan",
+    "ask_general_instructions": "yleiset ohjeet"
 }
