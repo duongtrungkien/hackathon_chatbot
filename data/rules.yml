@@ -1,0 +1,68 @@
+version: "2.0"
+
+rules:
+
+- rule: Say `greet` when the user starts a conversation 
+  conversation_start: true
+  steps:
+  - action: utter_greet
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+  
+- rule: Implementation of the Two-Stage-Fallback
+  steps:
+  - intent: nlu_fallback
+  - action: action_two_stage_fallback
+  - active_loop: action_two_stage_fallback
+
+- rule: Ask the user to switch to speaking in Finnish.
+  steps:
+  - intent: non_finnish
+  - action: utter_non_finnish  
+
+- rule: Ask for human.
+  steps:
+  - intent: ask_human
+  - action: utter_ask_human
+
+- rule: Activate form
+  steps:
+  - intent: activate_new_supplier_form
+  - action: utter_activate_new_supplier_form
+  - action: new_supplier_form
+  - active_loop: new_supplier_form
+
+- rule: Submit form 
+  condition:
+  - active_loop: new_supplier_form
+  steps:
+  - action: new_supplier_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_submit_new_supplier_form
+
+- rule: Activate exam form
+  steps:
+  - intent: activate_exam_form
+  - action: utter_activate_exam_form
+  - action: exam_form
+  - active_loop: exam_form
+
+- rule: Submit exam form 
+  condition:
+  - active_loop: exam_form
+  steps:
+  - action: exam_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null 
+  - action: action_submit_exam_form  

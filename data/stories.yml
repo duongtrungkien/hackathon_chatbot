@@ -1,0 +1,234 @@
+version: "2.0"
+stories:
+- story: show_options
+  steps:
+  - intent: show_options
+  - action: utter_greet
+- story: central_product_complain
+  steps:
+  - intent: central_product_complain
+  - action: utter_central_product_complain 
+- story: return_transit_product
+  steps:
+  - intent: return_transit_product
+  - action: utter_return_transit_product
+- story: receive_direct_delivery_product   
+  steps:
+  - intent: receive_direct_delivery_product   
+  - action: utter_receive_direct_delivery_product      
+- story: not_read_new_employee_doc
+  steps:
+  - intent: not_read_new_employee_doc
+  - action: utter_not_read_new_employee_doc
+- story: ask_accounting
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_accounting
+  - action: utter_ask_accounting
+- story: ask_sales
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_sales
+  - action: utter_ask_sales
+- story: ask_purchase
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_purchase
+  - action: utter_ask_purchase
+- story: ask_supply_chain
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_supply_chain
+  - action: utter_ask_supply_chain
+- story: ask_general_instructions
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_general_instructions
+  - action: utter_ask_general_instructions
+- story: ask_accounting_map
+  steps:
+  - intent: ask_accounting_map
+  - action: utter_ask_accounting_map
+- story: ask_accounting_VAT_code
+  steps:
+  - intent: ask_accounting_VAT_code
+  - action: utter_ask_accounting_VAT_code
+- story: ask_accounting_transaction
+  steps:
+  - intent: ask_accounting_transaction
+  - action: utter_ask_accounting_transaction
+- story: ask_accounting_ledger
+  steps:
+  - intent: ask_accounting_ledger
+  - action: utter_ask_accounting_ledger
+- story: ask_accounting_correction
+  steps:
+  - intent: ask_accounting_correction
+  - action: utter_ask_accounting_correction
+- story: ask_sales_account_statement
+  steps:
+  - intent: ask_sales_account_statement
+  - action: utter_ask_sales_account_statement
+- story: ask_sales_due_date_installments
+  steps:
+  - intent: ask_sales_due_date_installments
+  - action: utter_ask_sales_due_date_installments
+- story: ask_sales_invoice_copy
+  steps:
+  - intent: ask_sales_invoice_copy
+  - action: utter_ask_sales_invoice_copy
+- story: ask_sales_payment_ceiling
+  steps:
+  - intent: ask_sales_payment_ceiling
+  - action: utter_ask_sales_payment_ceiling
+- story: ask_sales_e_invoice
+  steps:
+  - intent: ask_sales_e_invoice
+  - action: utter_ask_sales_e_invoice
+- story: ask_purchase_open_non_contract_vendor_for_system
+  steps:
+  - intent: ask_purchase_open_non_contract_vendor_for_system
+  - action: utter_ask_purchase_open_non_contract_vendor_for_system
+- story: ask_purchase_transfer_invoice
+  steps:
+  - intent: ask_purchase_transfer_invoice
+  - action: utter_ask_purchase_transfer_invoice
+- story: ask_purchase_invoice_status
+  steps:
+  - intent: ask_purchase_invoice_status
+  - action: utter_ask_purchase_invoice_status
+- story: ask_purchase_has_invoice_arrived_espoo
+  steps:
+  - intent: ask_purchase_has_invoice_arrived_espoo
+  - action: utter_ask_purchase_has_invoice_arrived_espoo
+- story: ask_purchase_foreign_landing
+  steps:
+  - intent: ask_purchase_foreign_landing
+  - action: utter_ask_purchase_foreign_landing
+- story: ask_supply_chain_catering_front_office
+  steps:
+  - intent: ask_supply_chain_catering_front_office
+  - action: utter_ask_supply_chain_catering_front_office
+- story: ask_supply_chain_complaints_products
+  steps:
+  - intent: ask_supply_chain_complaints_products
+  - action: utter_ask_supply_chain_complaints_products
+- story: ask_supply_chain_login_e_shop_supply_orders_delivery_methods
+  steps:
+  - intent: ask_supply_chain_login_e_shop_supply_orders_delivery_methods
+  - action: utter_ask_supply_chain_login_e_shop_supply_orders_delivery_methods
+- story: ask_supply_chain_login_e_shop_id
+  steps:
+  - intent: ask_supply_chain_login_e_shop_id
+  - action: utter_ask_supply_chain_login_e_shop_id
+- story: ask_supply_chain_posti's_trolleys
+  steps:
+  - intent: ask_supply_chain_posti's_trolleys
+  - action: utter_ask_supply_chain_posti's_trolleys
+- story: save_new_supplier_form
+  steps:
+  - intent: save_new_supplier_form
+  - action: utter_save_new_supplier_form
+- story: delete_new_supplier_form
+  steps:
+  - intent: delete_new_supplier_form
+  - action: action_delete_new_supplier_form
+- story: Story from Conversation ID 300a25fcfaae44009dd0b00e729b33ac
+  steps:
+  - intent: ask_new_employee
+  - action: utter_ask_new_employee
+  - intent: activate_exam_form
+  - action: utter_activate_exam_form
+  - action: exam_form
+  - active_loop: exam_form
+  - slot_was_set:
+    - requested_slot: 1_milloin_aamustartti_alkaa
+  - intent: nlu_fallback
+  - action: exam_form
+  - slot_was_set:
+    - 1_milloin_aamustartti_alkaa: B
+  - slot_was_set:
+    - requested_slot: 2_kuka_vetää_aamustartin
+  - intent: nlu_fallback
+  - action: exam_form
+  - slot_was_set:
+    - 2_kuka_vetää_aamustartin: A
+  - slot_was_set:
+    - requested_slot: 3_Mille_Neptonin_taskille
+  - intent: deny
+  - action: exam_form
+  - slot_was_set:
+    - 3_Mille_Neptonin_taskille: C
+  - slot_was_set:
+    - requested_slot: 4_Saako_lounaalle
+  - intent: nlu_fallback
+  - action: exam_form
+  - slot_was_set:
+    - 4_Saako_lounaalle: A
+  - slot_was_set:
+    - requested_slot: 5_Saako_saapuneet_kansioon
+  - intent: nlu_fallback
+  - action: exam_form
+  - slot_was_set:
+    - 5_Saako_saapuneet_kansioon: A
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_exam_form
+  - slot_was_set:
+    - 1_milloin_aamustartti_alkaa: null
+  - slot_was_set:
+    - 2_kuka_vetää_aamustartin: null
+  - slot_was_set:
+    - 3_Mille_Neptonin_taskille: null
+  - slot_was_set:
+    - 4_Saako_lounaalle: null
+  - slot_was_set:
+    - 5_Saako_saapuneet_kansioon: null
+- story: Story from Conversation ID 8a2d66132c28446f9b2241ab41cf8f7a
+  steps:
+  - intent: nlu_fallback
+  - action: action_two_stage_fallback
+  - active_loop: action_two_stage_fallback
+  - intent: activate_new_supplier_form
+  - action: action_two_stage_fallback
+  - active_loop: null
+  - intent: activate_new_supplier_form
+  - action: utter_activate_new_supplier_form
+  - action: new_supplier_form
+  - active_loop: new_supplier_form
+  - slot_was_set:
+    - requested_slot: 1_yrityksen_nimi
+  - intent: nlu_fallback
+  - action: new_supplier_form
+  - slot_was_set:
+    - 1_yrityksen_nimi: Elisa
+  - slot_was_set:
+    - requested_slot: 2_y_tunnus
+  - intent: nlu_fallback
+  - action: new_supplier_form
+  - slot_was_set:
+    - 2_y_tunnus: 3453535-3422
+  - slot_was_set:
+    - requested_slot: 9_mitä_tavaraa_tai_palvelua_tilataan
+  - intent: nlu_fallback
+  - action: new_supplier_form
+  - slot_was_set:
+    - 9_mitä_tavaraa_tai_palvelua_tilataan: phone
+  - slot_was_set:
+    - requested_slot: a_millä_euromäärällä_ollaan_tilaamassa
+  - intent: nlu_fallback
+  - action: new_supplier_form
+  - slot_was_set:
+    - a_millä_euromäärällä_ollaan_tilaamassa: '1000'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_new_supplier_form
+  - intent: save_new_supplier_form
+  - action: utter_save_new_supplier_form

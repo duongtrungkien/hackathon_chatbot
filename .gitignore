@@ -1,0 +1,11 @@
+/pretrained
+/models
+.DS_Store
+*.docx
+*.doc
+*.xlsx
+*.xls
+*.db
+*.db-shm
+*.db-wal
+*.pyc

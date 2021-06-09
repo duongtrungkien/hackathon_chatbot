@@ -1,0 +1,251 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - Hei
+    - Heips
+    - Heippa
+    - Moi
+    - Moikka
+    - Moro
+    - Terve
+    - Tervehdys
+    - Hyvää huomenta
+    - Hyvää päivää
+    - Hyvää iltaa
+    - Morjens
+- intent: goodbye
+  examples: |
+    - Heihei
+    - Moimoi
+    - Moi Moi
+    - Hei hei
+    - Kiitos hei
+- intent: affirm
+  examples: |
+    - Joo
+    - y
+    - todellakin
+    - tietysti
+    - se kuulostaa hyvältä
+    - oikea
+- intent: deny
+  examples: |
+    - ei
+    - n
+    - ei koskaan
+    - En usko
+    - älä pidä siitä
+    - ei todellakaan
+    - ei oikeastaan
+- intent: bot_challenge
+  examples: |
+    - Oletko botti?
+    - Oletko ihminen?
+    - puhun botille?
+    - puhunko ihmiselle?
+- intent: ask_accounting
+  examples: |
+    - Voitko kertoa minulle kirjanpidosta?
+    - Tarvitsisin tietoa kirjanpidosta.
+    - Tarvitsen apua kirjanpitoon liittyen.
+    - Voitko auttaa minua kirjanpitoasiassa?
+    - Pystytkö kertomaan infoa kirjanpitoon liittyen?  
+- intent: ask_accounting_map
+  examples: |
+    - Missä on laskentatunnistekartta?
+    - Osaatko sanoa missä laskentatunnistekartta on?
+    - Minun pitäisi löytää laskentatunnistekartta.
+    - En löydä laskentatunnistekarttaa.
+    - Voitko kertoa missä on laskentatunnistekartta?     
+- intent: ask_accounting_VAT_code
+  examples: |    
+    - Mitä ALV-koodia käytän?
+    - Millaista ALV-koodia minun pitää käyttää?
+    - Mikä ALV-koodi minulla pitää olla käytössä?
+    - Mitä ALV-tunnistetta käytän?
+    - Mitä verokohtelukoodia käytän? 
+- intent: ask_accounting_transaction
+  examples: |    
+    - Mille tilille tapahtuma tulisi kirjata?
+    - Mille tilille kirjaan tämän tapahtuman?
+    - Mille tilille tapahtuman kirjaaminen tapahtuu?
+    - Mikä tili on sopiva tapahtuman kirjaamiseen?
+    - Minkä tilin valitsen tapahtuman kirjaamiselle? 
+- intent: ask_accounting_correction
+  examples: |
+    - Miten teen oikaisupyynnön?
+    - Miten oikaisupyynnön teko tapahtuu?
+    - Millä tavalla teen oikaisupyynnön?
+    - Kuinka teen oikaisupyynnön?
+    - Oikaisupyynnöt, miten tehdään?
+    - Oikaisupyyntö, miten teen?
+- intent: ask_accounting_ledger
+  examples: |    
+    - Tarvitaan pääkirja tietyltä ajanjaksolta
+    - Tarvitaan pääkirja tietystä hankkeesta
+    - Mistä saan pääkirjan ajanjaksolta
+    - Miten saan pääkirjan tästä hankkeesta?
+    - Miten saan pääkirjan tältä ajanjaksolta?
+    - Mistä löydän pääkirjan?
+    - Tarvitsen pääkirjan tietyltä ajanjaksolta.
+    - Tarvitsen pääkirjan tästä hankkeesta. 
+- intent: ask_sales
+  examples: |
+    - Voitko kertoa minulle myynnistä?
+    - Voitko kertoa minulle myynnin asioista?
+    - Asiani koskee myyntiä.
+    - Kysymykseni liittyy myyntiin.
+    - Mistä löydän lisätietoa myyntiin liittyen?
+    - Osaatko kertoa myynnin asioista? 
+- intent: ask_sales_account_statement
+  examples: |
+    - Haluaisin kysyä asiakkaan tiliotteen tilanteesta.
+    - Voitko kertoa asiakkaan tiliotteesta?
+    - Haluan tietoa asiakkaan tiliotteesta.
+    - Kysymykseni koskee asiakkaan tiliotetta.
+    - Tarvitsen tietoa asiakkaan tiliotteen tilanteesta.
+    - Mikä on asiakkaan tiliotteen status?  
+- intent: ask_sales_due_date_installments
+  examples: |
+    - Haluaisin muuttaa laskun eräpäivää.
+    - Haluaisin saada laskun erissä.
+    - Miten voin muuttaa eräpäivää?
+    - Miten saan maksettua laskun erissä?
+    - Miten laskun voi jakaa eriin?
+    - Voitko auttaa minua laskun eräpäivän siirtämisessä?
+    - Miten voin siirtää laskun eräpäivää? 
+- intent: ask_sales_invoice_copy
+  examples: |
+    - Saisinko laskukopion?
+    - Tarvitsisin laskukopion.
+    - Haluan kopion laskusta.
+    - Anna minulle laskukopio.
+    - Mistä saan laskukopion?
+    - Miten saan kopion laskusta? 
+- intent: ask_sales_payment_ceiling
+  examples: |
+    - Mistä löydän tietoa maksukatosta?
+    - Mistä löydän tietoa maksukaton suuruudesta?
+    - Haluaisin tietää millainen maksukatto tässä on.
+    - Onko tähän asetettu maksukattoa?
+    - Miten löydän tiedon maksukatosta?
+- intent: ask_sales_e_invoice
+  examples: |
+    - Miten löydän tietoa sähköisestä laskusta?
+    - Haluaisin laskut sähköisenä.
+    - Voitko kertoa minulle sähköisestä laskutuksesta?
+    - Miten saan muutettua laskut sähköiseen muotoon?
+    - Miten saan vaihdettua laskutuksen sähköiseksi?
+    - Pystytkö muuttamaan laskutuksemme              
+- intent: ask_purchase
+  examples: |
+    - Voitko kertoa minulle ostoista?
+    - Haluan tietoa ostoista.
+    - Mistä saan lisätietoa ostoista?
+    - Kysymykseni liittyy ostoihin.
+    - Osaatko sanoa mistä saan tietoa ostoista?
+    - Miten löydän tietoa ostoista?  
+- intent: ask_purchase_open_non_contract_vendor_for_system
+  examples: |
+    - Miten avaan ei-sopimustoimittajan tilausjärjestelmään?
+    - Miten avaan toimittajan tilausjärjestelmään, kun kyseessä ei ole sopimustoimittaja?
+    - Haluaisin kysyä ei-sopimustoimittajan avaamisesta tilausjärjestelmään.
+    - Pystytkö auttamaan minua avaamaan ei-sopimustoimittajan tilausjärjestelmään?
+    - Tilausjärjestelmään pitäisi avata uusi toimittaja, joka ei ole sopimustoimittaja. 
+- intent: ask_purchase_transfer_invoice
+  examples: |
+    - Miten laskun voi siirtää uudelle hyväksyjälle?
+    - Pystytkö siirtämään laskun toiselle hyväksyjälle?
+    - Lasku pitäisi siirtää hyväksyjältä toiselle.
+    - Voiko laskun siirtää toiselle hyväksyjälle?
+    - Haluan siirtää laskun toiselle hyväksyjälle.
+    - Laskun hyväksyjää pitää muuttaa.
+    - Laskun hyväksyy toinen henkilö. 
+- intent: ask_purchase_invoice_status
+  examples: |
+    - Missä tilassa lasku on?
+    - Missä tilassa tämä lasku on?
+    - Pystytkö katsomaan, mikä on tämän laskun tila?
+    - Mikä on laskun tila?
+    - Voitko kertoa laskun tilan?
+    - Tarvitsen raportin laskun tilasta?    
+- intent: ask_purchase_has_invoice_arrived_espoo
+  examples: |
+    - Onko lasku saapunut Espoon kaupungille?
+    - Haluaisin tietää, onko lasku saapunut Espoon kaupungille.
+    - Pystytkö kertomaan, onko lasku tullut perille Espoon kaupungille?
+    - Mistä saisin tiedon siitä, onko lasku saapunut Espoon kaupungille?
+    - Minun täytyisi tietää onko lasku mennyt perille Espoon kaupungille.
+- intent: ask_purchase_foreign_landing
+  examples: |
+    - Mistä saan tietoa ulkomaalaisesta laskusta?
+    - Minulla on ulkomaalainen lasku.
+    - Minulla on lasku ulkomailta.
+    - Miten voin maksaa ulkomaalaisen laskun?
+    - Miten voin tehdä ulkomaalaisen laskun?
+    - Minun pitäisi lähettää lasku ulkomaille.
+    - Voitko auttaa minua ulkomaalaisen laskun teossa?    
+- intent: ask_supply_chain
+  examples: |
+    - Voitko kertoa minulle toimitusketjusta?
+    - Haluaisin tietää toimitusketjusta.
+    - Kysymykseni liittyy toimitusketjuun.
+    - Millainen toimitusketju tässä on?
+    - Voitko antaa minulle tietoa toimitusketjusta?
+    - Tarvitsisin infoa toimitusketjusta.     
+- intent: ask_supply_chain_catering_front_office
+  examples: |
+    - Tarvitsen ohjeen front officea varten.
+    - Catering front office ohje
+- intent: ask_supply_chain_complaints_products
+  examples: |
+    - Haluaisin tehdä reklamaation varaston kautta tilatuista tuotteista.
+    - Miten voin tehdä reklamaation varaston kautta tilatusta tuotteesta?
+    - Tilasin tuotteita varaston kautta, miten reklamaatio tehdään?
+    - Tilasin varaston kautta tuotteita, voitko kertoa miten teen reklamaation niistä?
+    - Miten reklamaatio tehdään siinä tapauksessa kun tuotteet on tilattu varaston kautta?  
+- intent: ask_supply_chain_login_e_shop_supply_orders_delivery_methods
+  examples: |
+    - Mitkä ovat verkkokaupan tarviketilauksien toimitustavat?
+    - Mitä toimitustapoja löytyy verkkokaupan tarviketilauksille?
+    - Millaisia toimitustapoja olisi saatavilla verkkokaupan tarviketilauksille?
+    - Kerro minulle verkkokaupan tarviketilauksien eri toimitustavoista.
+    - Millä tavalla verkkokaupan tarviketilaukset toimitetaan?     
+- intent: ask_supply_chain_posti's_trolleys
+  examples: |
+    - Voitko kertoa minulle Espoon kaupungin yksiköihin jääneistä Postin rullakoista?
+    - Voitko kertoa minulle Espoon kaupungin yksiköihin jääneistä Postin kuormalavoista?
+    - Tarvitsisin tietoa Espoon kaupungin yksiköihin jääneistä Postin rullakoista.
+    - Rullakko on jäänyt Espoon kaupungin yksiköihin.
+    - Kuormalava on jäänyt Espoon kaupungin yksikköön.    
+- intent: ask_supply_chain_login_e_shop_id
+  examples: |
+    - Haluaisin tunnukset verkkokauppaan.
+    - Miten voin tehdä tunnuspyynnön verkkokauppaan?
+    - Miten voin tehdä verkkokaupan tunnuspyynnön?
+    - Miten saan tunnukset verkkokauppaan?
+    - Tarvitsen verkkokauppatunnukset.
+    - Mistä saan tunnuksen verkkokauppaan?                        
+- intent: activate_new_supplier_form
+  examples: |
+    - haluan täyttää uuden toimittajan perustietolomakkeen
+- intent: show_options
+  examples: |
+    - Mitä vaihtoehtoja voin kysyä?
+    - auta  
+- intent: ask_new_employee
+  examples: |
+    - Olen uusi työntekijä. Haluan tutustua asiakaspalvelun edustajan tehtäviin.
+- intent: activate_exam_form
+  examples: |
+    - Haluan suorittaa kokeen uudelle työntekijälle 
+- intent: central_product_complain
+  examples: |
+    - Miten teen reklamaation keskustavaratuoteelle?   
+- intent: return_transit_product
+  examples: |
+    - Miten teen tuotepalautuksen kauttakulkutuotteelle?
+- intent: receive_direct_delivery_product   
+  examples: |
+    - Mitä minun pitää huomioida suoratoimitustuotteen vastaanottamisesta?
