@@ -297,7 +297,7 @@ class FasttextLanguageFallbackClassifier(IntentClassifier):
             # Overwrite the current intent by putting a fallback in.
             message.data[INTENT] = {
                 "name": self.intent_triggered,
-                "confidence": 1,
+                "confidence": 1 - proba,
             }
 
     def _not_enough_text(self, message: Message):

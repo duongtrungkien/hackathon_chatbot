@@ -9,10 +9,6 @@ intents:
     use_entities: true
 - goodbye:
     use_entities: true
-- affirm:
-    use_entities: true
-- deny:
-    use_entities: true
 - bot_challenge:
     use_entities: true
 - non_finnish:
@@ -91,13 +87,24 @@ intents:
     use_entities: true
 - receive_direct_delivery_product:
     use_entities: true
+- inform:
+    use_entities: true
+- ask_joke    
+- thank    
 entities: []
 slots:
-  1_yrityksen_nimi:
-    type: rasa.shared.core.slots.TextSlot
+  new_employee_exam_passed:
+    type: rasa.shared.core.slots.BooleanSlot
+    initial_value: false
+    auto_fill: false
+    influence_conversation: false
+  exam_score:
+    type: rasa.shared.core.slots.FloatSlot
     initial_value: null
     auto_fill: false
-    influence_conversation: true
+    influence_conversation: false
+    max_value: 1.0
+    min_value: 0.0
   2_y_tunnus:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
@@ -144,15 +151,12 @@ slots:
     auto_fill: true
     influence_conversation: false
 responses:
-  utter_ask_1_yrityksen_nimi:
-  - text: Mikä on yrityksen nimi?
-  - text: Mikä on kyseessä olevan yrityksen nimi?
-  - text: Voitko kertoa yrityksen nimen?
   utter_ask_2_y_tunnus:
   - text: Mikä on yrityksen Y-tunnus?
   - text: Voitko kertoa Y-tunnuksen?
   - text: Kertoisitko yrityksen Y-tunnuksen?
-  - text: Mikä Y-tunnus on kyseessä?|Mikä on yritystunnus?
+  - text: Mikä Y-tunnus on kyseessä?
+  - text: Mikä on yritystunnus?
   utter_ask_9_mitä_tavaraa_tai_palvelua_tilataan:
   - text: Mitä tavaraa tai palvelua tilataan?
   utter_ask_a_millä_euromäärällä_ollaan_tilaamassa:
@@ -178,16 +182,16 @@ responses:
   utter_ask_3_Mille_Neptonin_taskille:
   - buttons:
     - payload: A
-      title: 'A: Kirjanpito Ja Myynti'
+      title: 'A: Maantaisin ja Perjantaisin'  
     - payload: B
-      title: 'B: Osto ja Toke'
+      title: 'B: Sunnuntaisin'
     - payload: C
-      title: 'C: Osto ja Toke, Myynti, Kirjanpito'
-    text: Mille Neptonin taskille asiakaspalvelutyöskentely kirjataan?
+      title: 'C: Tiistaisin ja Torstaisin'
+    text: Koska ideat käsitellään?
   utter_ask_4_Saako_lounaalle:
   - buttons:
     - payload: A
-      title: 'A: Kyllä'
+      title: 'A: Joo'
     - payload: B
       title: 'B: Ei'
     text: Saako lounaalle mennä kysymättä kaverilta?
@@ -196,7 +200,7 @@ responses:
     - payload: A
       title: 'A: Ei'
     - payload: B
-      title: 'B: Kyllä'
+      title: 'B: Joo'
     text: Saako saapuneet kansioon jättää luettuja viestejä?
   utter_greet:
   - buttons:
@@ -221,30 +225,21 @@ responses:
   - text: Anteeksi, en ymmärtänyt kysymystäsi. Muotoilisitko sen uudelleen?
   - text: Olen pahoillani, nyt en ymmärtänyt. Pystytkö ilmaisemaan kysymyksesi toisin?
   utter_default:
-  - text: Olen pahoillani, en pysty auttamaan sinua. Haluatko ottaa yhteyttä kollegaani?
-  - text: Olen pahoillani, en ymmärrä. Haluatko ottaa yhteyttä ihmiskollegaani?
-  - text: Anteeksi, nyt en ymmärrä. Haluaisitko keskustella ihmiskollegani kanssa?
-  - text: Olen pahoillani, mutta en ymmärrä sinua. Tahdotko keskustella ihmiskollegani kanssa?
-    buttons:
+  - buttons:
     - payload: /ask_human
-      title: joo
-    - payload: /deny
-      title: ey
+      title: Joo
+    text: Olen pahoillani, en pysty auttamaan sinua. Haluatko ottaa yhteyttä kollegaani? Voit myös lähettää minulle muita kysymyksiä :)
   utter_ask_human:
   - text: Otan yhteyttä kollegaani. Odota :)
   - text: Otan yhteyttä kollegaani. Ole hyvä ja odota :)
   - text: Otan juuri yhteyttä kollegaani. Odota hetki :)
-  - text: Otan yhteyttä kollegaani. Odota :)
   utter_non_finnish:
-  - text: Tämä botti tukee vain suomea. Haluatko ottaa yhteyttä kollegaani?
-  - text: Ymmärrän vain suomea. Haluatko ottaa yhteyttä ihmiskollegaani?
-  - text: Pystyn ymmärtämään vain suomea. Haluatko keskustella ihmiskollegani kanssa?
-  - text: Minä ymmärrän vain suomea. Haluaisitko keskustella ihmiskollegani kanssa?
-    buttons:
+  - buttons:
     - payload: /ask_human
-      title: joo
-    - payload: /deny
-      title: ey
+      title: Joo
+    - payload: /thank
+      title: Ei
+    text: Pystyn ymmärtämään vain suomea. Haluatko keskustella ihmiskollegani kanssa?
   utter_ask_accounting:
   - buttons:
     - payload: /ask_accounting_map
@@ -259,15 +254,15 @@ responses:
       title: Tarvitaan pääkirja tietyltä ajanjaksolta/hankkeelta tms.
     text: 'Alla on usein kysyttyjä kysymyksiä kirjanpidosta, ole hyvä ja valitse sopiva kysymys:'
   utter_ask_accounting_map:
-  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Kirjanpito/Missä_on_laskentatunnistekartta.docx)
+  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Kirjanpito/Missä_on_laskentatunnistekartta.docx)
   utter_ask_accounting_VAT_code:
-  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Mitä_ALV-koodia_käytän.docx)
+  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Kirjanpito/Mitä_ALV-koodia_käytän.docx)
   utter_ask_accounting_transaction:
-  - text: Kiitos kysymyksestä. [Klikkaa tästä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Kirjanpito/Mille_tilille_kirjataan.docx)
+  - text: Kiitos kysymyksestä. [Klikkaa tästä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Kirjanpito/Mille_tilille_kirjataan.docx)
   utter_ask_accounting_correction:
-  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Kirjanpito/Oikaisupyynnöt.docx)
+  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Kirjanpito/Oikaisupyynnöt.docx)
   utter_ask_accounting_ledger:
-  - text: Kiitos kysymästä. [Paina tästä tekstistä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Kirjanpito/Tarvitsen_pääkirjan.docx)
+  - text: Kiitos kysymästä. [Paina tästä tekstistä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Kirjanpito/Tarvitsen_pääkirjan.docx)
   utter_ask_sales:
   - buttons:
     - payload: /ask_sales_account_statement
@@ -282,15 +277,15 @@ responses:
       title: Sähköinen lasku
     text: 'Alla on usein kysyttyjä kysymyksiä myyntiin liittyen, ole hyvä ja valitse sopiva kysymys:'
   utter_ask_sales_account_statement:
-  - text: Kiitos kysymästä. [Paina tästä tekstistä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Myynti/Asiakkaan_tiliote.docx)
+  - text: Kiitos kysymästä. [Paina tästä tekstistä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Myynti/Asiakkaan_tiliote.docx)
   utter_ask_sales_due_date_installments:
-  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Myynti/Eräpäivän_muutos_ja_maksueriin_laittaminen.docx)
+  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Myynti/Eräpäivän_muutos_ja_maksueriin_laittaminen.docx)
   utter_ask_sales_invoice_copy:
-  - text: Kiitos kysymästä. [Paina tästä tekstistä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Myynti/Laskukopiopyyntö.docx)
+  - text: Kiitos kysymästä. [Paina tästä tekstistä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Myynti/Laskukopiopyyntö.docx)
   utter_ask_sales_payment_ceiling:
-  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Myynti/Maksukatto.docx)
+  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Myynti/Maksukatto.docx)
   utter_ask_sales_e_invoice:
-  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Myynti/Sähköinen_lasku.docx)
+  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Myynti/Sähköinen_lasku.docx)
   utter_ask_purchase:
   - buttons:
     - payload: /ask_purchase_open_non_contract_vendor_for_system
@@ -305,15 +300,15 @@ responses:
       title: Ulkomaalainen lasku
     text: 'Alla on usein kysyttyjä kysymyksiä ostoihin liittyen, ole hyvä ja valitse sopiva kysymys:'
   utter_ask_purchase_open_non_contract_vendor_for_system:
-  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Ostot/Ei_sopimusosto_kysely.docx)
+  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Ostot/Ei_sopimusosto_kysely.docx)
   utter_ask_purchase_transfer_invoice:
-  - text: Kiitos kysymästä. [Paina tästä tekstistä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Ostot/Laskun_siirto_hyväksyjältä_toiselle.doc)
+  - text: Kiitos kysymästä. [Paina tästä tekstistä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Ostot/Laskun_siirto_hyväksyjältä_toiselle.doc)
   utter_ask_purchase_invoice_status:
-  - text: Kiitos kysymyksestä. [Klikkaa tästä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Ostot/Laskun_tilan_raportti_missä_tilassa_lasku_on.docx)
+  - text: Kiitos kysymyksestä. [Klikkaa tästä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Ostot/Laskun_tilan_raportti_missä_tilassa_lasku_on.docx)
   utter_ask_purchase_has_invoice_arrived_espoo:
-  - text: Kiitos kysymästä. [Paina tästä tekstistä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Ostot/Onko_lasku_saapunut_Espoon_kaupungille.docx)
+  - text: Kiitos kysymästä. [Paina tästä tekstistä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Ostot/Onko_lasku_saapunut_Espoon_kaupungille.docx)
   utter_ask_purchase_foreign_landing:
-  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Ostot/Ulkomaalainen_lasku.docx)
+  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Ostot/Ulkomaalainen_lasku.docx)
   utter_ask_supply_chain:
   - buttons:
     - payload: /ask_supply_chain_catering_front_office
@@ -325,20 +320,20 @@ responses:
     - payload: /ask_supply_chain_login_e_shop_id
       title: Login verkkokaupan tunnuspyynnöt
     - payload: /ask_supply_chain_posti's_trolleys
-      title: Espoon kaupungin yksiköihin jääneet Postin rullakot ja kuorma lavat
+      title: Espoon kaupungin yksiköihin jääneet Postin rullakot ja kuormalavat
     text: 'Alla on usein kysyttyjä kysymyksiä toimitusketjusta, ole hyvä ja valitse sopiva kysymys:'
   utter_ask_supply_chain_catering_front_office:
-  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Toimitusketju/Catering_front_office_ohje.docx)
+  - text: Kiitos kysymästä. [Paina tästä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Toimitusketju/Catering_front_office_ohje.docx)
   utter_ask_supply_chain_complaints_products:
-  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Toimitusketju/Keskusvaraston_kautta_tilattujen_tuotteiden_reklamaatiot.docx)
+  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Toimitusketju/Keskusvaraston_kautta_tilattujen_tuotteiden_reklamaatiot.docx)
   utter_ask_supply_chain_login_e_shop_supply_orders_delivery_methods:
-  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Toimitusketju/LOGIN_VERKKOKAUPAN_TARVIKETILAUKSIEN_TOIMIT_STAVAT_PALAUTUKSET_REKLAMAATIOT.docx)
+  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Toimitusketju/LOGIN_VERKKOKAUPAN_TARVIKETILAUKSIEN_TOIMIT_STAVAT_PALAUTUKSET_REKLAMAATIOT.docx)
   utter_ask_supply_chain_login_e_shop_id:
-  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Toimitusketju/Login_verkkokaupan_tunnuspyynnöt.docx)
+  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Toimitusketju/Login_verkkokaupan_tunnuspyynnöt.docx)
   utter_ask_supply_chain_posti's_trolleys:
-  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://8f31d4c87743.ngrok.io/Toimitusketju/Rullakoiden_ja_kuormalavojen_noutotilaukset.docx)
+  - text: Kiitos kysymästä. [Napsauta tätä nähdäksesi ohjeet](https://b76834b76650.ngrok.io/Toimitusketju/Rullakoiden_ja_kuormalavojen_noutotilaukset.docx)
   utter_ask_general_instructions:
-  - text: Ole hyvä ja [klikkaa tästä nähdäksesi yleiset ohjeet](https://8f31d4c87743.ngrok.io/Yleiset_ohjeet/Perehdytysohje/Frontin_työskentelyohje_v0.2.docx)
+  - text: Ole hyvä ja [klikkaa tästä nähdäksesi yleiset ohjeet](https://b76834b76650.ngrok.io/Yleiset_ohjeet/Perehdytysohje/Frontin_työskentelyohje_v0.2.docx)
   utter_activate_new_supplier_form:
   - text: Selvä. Kysyn sinulta kysymyksiä, joiden avulla lomake täytetään. Ole hyvä ja seuraa askel askeleelta.
   utter_save_new_supplier_form:
@@ -348,10 +343,10 @@ responses:
     - payload: /activate_exam_form
       title: Joo
     - payload: /not_read_new_employee_doc
-      title: Ey
+      title: Ei
     text: Oletko lukenut tiedoston ''Frontin työskentelyohje v.0.2''? Se löytyy ''Perehdytysohje''-kansiosta, joka sijaitsee kansiossa ''Yleiset ohjeet''.
   utter_not_read_new_employee_doc:
-  - text: Ole hyvä ja lue se, sitten annan sinulle lyhyen kokeen. [Napsauta tätä ladataksesi asiakirjan.](https://8f31d4c87743.ngrok.io/Yleiset_ohjeet/Perehdytysohje/Frontin_työskentelyohje_v0.2.docx)
+  - text: Ole hyvä ja lue se, sitten annan sinulle lyhyen kokeen. [Napsauta tätä ladataksesi asiakirjan.](https://b76834b76650.ngrok.io/Yleiset_ohjeet/Perehdytysohje/Frontin_työskentelyohje_v0.2.docx)
   utter_activate_exam_form:
   - text: Hyvä, aion nyt suorittaa pienen kokeen
   utter_central_product_complain:
@@ -365,6 +360,10 @@ responses:
       Toimitukset on tarkastettava 5 päivän kuluessa lähetyksen saapumisesta ja virheestä tulee ilmoittaa välittömästi kirjallisesti tavarantoimittajan asiakaspalvelun s-postiin.
       Tilaaja huolehtii vastaanottomerkintöjen tekemisen Login verkkokauppaan asianmukaisesti, tarkastaessaan lähetyksen. Jos tuotteita ei vastaanoteta, kiertävät laskut manuaalitarkastukseen ERP:ssä.
       [Login verkkokaupassa on otettu käyttöön automaattinen vastaanotto. Tarkempaa tietoa toiminnosta löytyy täältä.](https://espoo365.sharepoint.com/sites/Tyokalut/SitePages/Login-verkkokauppa.aspx)
+  utter_thank:
+  - text: olet tervetullut  
+  utter_ask_joke:
+  - text: Miksi hämähäkki on niin nörtti? Koska se on aina verkossa    
 actions:
 - action_default_ask_affirmation
 - action_submit_new_supplier_form
@@ -372,10 +371,9 @@ actions:
 - action_submit_exam_form
 - validate_new_supplier_form
 - validate_exam_form
+- action_hand_off
 forms:
   new_supplier_form:
-    1_yrityksen_nimi:
-    - type: from_text
     2_y_tunnus:
     - type: from_text
     9_mitä_tavaraa_tai_palvelua_tilataan:

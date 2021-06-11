@@ -7,6 +7,11 @@ rules:
   steps:
   - action: utter_greet
 
+- rule: Say thank
+  steps:
+  - intent: thank
+  - action: utter_thank
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
@@ -28,10 +33,10 @@ rules:
   - intent: non_finnish
   - action: utter_non_finnish  
 
-- rule: Ask for human.
+- rule: Ask for human
   steps:
   - intent: ask_human
-  - action: utter_ask_human
+  - action: action_hand_off
 
 - rule: Activate form
   steps:
@@ -55,7 +60,7 @@ rules:
   - intent: activate_exam_form
   - action: utter_activate_exam_form
   - action: exam_form
-  - active_loop: exam_form
+  - active_loop: exam_form  
 
 - rule: Submit exam form 
   condition:

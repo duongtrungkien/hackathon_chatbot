@@ -4,18 +4,24 @@ stories:
   steps:
   - intent: show_options
   - action: utter_greet
+- story: ask_joke
+  steps:
+  - intent: ask_joke
+  - action: utter_ask_joke
 - story: central_product_complain
   steps:
   - intent: central_product_complain
-  - action: utter_central_product_complain 
+  - action: utter_central_product_complain
+  - intent: ask_joke
+  - action: utter_ask_joke
 - story: return_transit_product
   steps:
   - intent: return_transit_product
   - action: utter_return_transit_product
-- story: receive_direct_delivery_product   
+- story: receive_direct_delivery_product
   steps:
-  - intent: receive_direct_delivery_product   
-  - action: utter_receive_direct_delivery_product      
+  - intent: receive_direct_delivery_product
+  - action: utter_receive_direct_delivery_product
 - story: not_read_new_employee_doc
   steps:
   - intent: not_read_new_employee_doc
@@ -24,6 +30,8 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - intent: ask_joke
+  - action: utter_ask_joke
   - intent: ask_accounting
   - action: utter_ask_accounting
 - story: ask_sales
@@ -38,6 +46,8 @@ stories:
   - action: utter_greet
   - intent: ask_purchase
   - action: utter_ask_purchase
+  - intent: ask_joke
+  - action: utter_ask_joke
 - story: ask_supply_chain
   steps:
   - intent: greet
@@ -160,7 +170,6 @@ stories:
     - 2_kuka_vetää_aamustartin: A
   - slot_was_set:
     - requested_slot: 3_Mille_Neptonin_taskille
-  - intent: deny
   - action: exam_form
   - slot_was_set:
     - 3_Mille_Neptonin_taskille: C
@@ -203,12 +212,6 @@ stories:
   - action: new_supplier_form
   - active_loop: new_supplier_form
   - slot_was_set:
-    - requested_slot: 1_yrityksen_nimi
-  - intent: nlu_fallback
-  - action: new_supplier_form
-  - slot_was_set:
-    - 1_yrityksen_nimi: Elisa
-  - slot_was_set:
     - requested_slot: 2_y_tunnus
   - intent: nlu_fallback
   - action: new_supplier_form
@@ -226,6 +229,284 @@ stories:
   - action: new_supplier_form
   - slot_was_set:
     - a_millä_euromäärällä_ollaan_tilaamassa: '1000'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_new_supplier_form
+  - intent: save_new_supplier_form
+  - action: utter_save_new_supplier_form
+- story: Story from Conversation ID 9814d1b551224bebb793ea86c5981eaa
+  steps:
+  - intent: activate_new_supplier_form
+  - action: utter_activate_new_supplier_form
+  - action: new_supplier_form
+  - active_loop: new_supplier_form
+  - slot_was_set:
+    - requested_slot: 2_y_tunnus
+  - slot_was_set:
+    - 2_y_tunnus: 3543562-4
+  - slot_was_set:
+    - requested_slot: 9_mitä_tavaraa_tai_palvelua_tilataan
+  - slot_was_set:
+    - 9_mitä_tavaraa_tai_palvelua_tilataan: puheli
+  - slot_was_set:
+    - requested_slot: a_millä_euromäärällä_ollaan_tilaamassa
+  - slot_was_set:
+    - a_millä_euromäärällä_ollaan_tilaamassa: '5000'
+  - slot_was_set:
+    - 2_y_tunnus: null
+  - slot_was_set:
+    - requested_slot: 2_y_tunnus
+  - slot_was_set:
+    - 2_y_tunnus: 3543562-4
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_new_supplier_form
+  - intent: delete_new_supplier_form
+  - action: action_delete_new_supplier_form
+- story: Story from Conversation ID 68e708f1bf7849179d280eec864aefb6
+  steps:
+  - intent: activate_exam_form
+  - action: utter_activate_exam_form
+  - action: exam_form
+  - active_loop: exam_form
+  - slot_was_set:
+    - requested_slot: 1_milloin_aamustartti_alkaa
+  - slot_was_set:
+    - 1_milloin_aamustartti_alkaa: B
+  - slot_was_set:
+    - requested_slot: 2_kuka_vetää_aamustartin
+  - slot_was_set:
+    - 2_kuka_vetää_aamustartin: A
+  - slot_was_set:
+    - requested_slot: 3_Mille_Neptonin_taskille
+  - slot_was_set:
+    - 3_Mille_Neptonin_taskille: C
+  - slot_was_set:
+    - requested_slot: 4_Saako_lounaalle
+  - slot_was_set:
+    - 4_Saako_lounaalle: B
+  - slot_was_set:
+    - requested_slot: 5_Saako_saapuneet_kansioon
+  - slot_was_set:
+    - 5_Saako_saapuneet_kansioon: B
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_exam_form
+  - slot_was_set:
+    - 1_milloin_aamustartti_alkaa: null
+  - slot_was_set:
+    - 2_kuka_vetää_aamustartin: null
+  - slot_was_set:
+    - 3_Mille_Neptonin_taskille: null
+  - slot_was_set:
+    - 4_Saako_lounaalle: null
+  - slot_was_set:
+    - 5_Saako_saapuneet_kansioon: null
+  - slot_was_set:
+    - exam_score: 4
+  - slot_was_set:
+    - new_employee_exam_passed: true
+- story: Story from Conversation ID d91a493d97b64cd98a69e3ad6dcdb5ad
+  steps:
+  - intent: activate_exam_form
+  - action: utter_activate_exam_form
+  - action: exam_form
+  - active_loop: exam_form
+  - slot_was_set:
+    - requested_slot: 1_milloin_aamustartti_alkaa
+  - slot_was_set:
+    - 1_milloin_aamustartti_alkaa: B
+  - slot_was_set:
+    - requested_slot: 2_kuka_vetää_aamustartin
+  - slot_was_set:
+    - 2_kuka_vetää_aamustartin: A
+  - slot_was_set:
+    - requested_slot: 3_Mille_Neptonin_taskille
+  - slot_was_set:
+    - 3_Mille_Neptonin_taskille: C
+  - slot_was_set:
+    - requested_slot: 4_Saako_lounaalle
+  - slot_was_set:
+    - 4_Saako_lounaalle: B
+  - slot_was_set:
+    - requested_slot: 5_Saako_saapuneet_kansioon
+  - slot_was_set:
+    - 5_Saako_saapuneet_kansioon: A
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_exam_form
+  - slot_was_set:
+    - 1_milloin_aamustartti_alkaa: null
+  - slot_was_set:
+    - 2_kuka_vetää_aamustartin: null
+  - slot_was_set:
+    - 3_Mille_Neptonin_taskille: null
+  - slot_was_set:
+    - 4_Saako_lounaalle: null
+  - slot_was_set:
+    - 5_Saako_saapuneet_kansioon: null
+  - slot_was_set:
+    - exam_score: 4
+  - slot_was_set:
+    - new_employee_exam_passed: true
+  - intent: ask_general_instructions
+  - action: utter_ask_general_instructions
+  - intent: activate_new_supplier_form
+  - action: utter_activate_new_supplier_form
+  - action: new_supplier_form
+  - active_loop: new_supplier_form
+  - slot_was_set:
+    - requested_slot: 2_y_tunnus
+  - slot_was_set:
+    - 2_y_tunnus: 3453554-5
+  - slot_was_set:
+    - requested_slot: 9_mitä_tavaraa_tai_palvelua_tilataan
+  - slot_was_set:
+    - 9_mitä_tavaraa_tai_palvelua_tilataan: Chatbot
+  - slot_was_set:
+    - requested_slot: a_millä_euromäärällä_ollaan_tilaamassa
+  - slot_was_set:
+    - a_millä_euromäärällä_ollaan_tilaamassa: '5000'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_new_supplier_form
+  - intent: save_new_supplier_form
+  - action: utter_save_new_supplier_form
+- story: Story from Conversation ID 3e65c8178e4b4bfda5de2434ca04aa78
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_sales
+  - action: utter_ask_sales
+  - intent: ask_sales_due_date_installments
+  - action: utter_ask_sales_due_date_installments
+  - intent: ask_purchase
+  - action: utter_ask_purchase
+  - intent: ask_new_employee
+  - action: utter_ask_new_employee
+  - intent: activate_exam_form
+  - action: utter_activate_exam_form
+  - action: exam_form
+  - active_loop: exam_form
+  - slot_was_set:
+    - requested_slot: 1_milloin_aamustartti_alkaa
+  - slot_was_set:
+    - 1_milloin_aamustartti_alkaa: B
+  - slot_was_set:
+    - requested_slot: 2_kuka_vetää_aamustartin
+  - slot_was_set:
+    - 2_kuka_vetää_aamustartin: A
+  - slot_was_set:
+    - requested_slot: 3_Mille_Neptonin_taskille
+  - slot_was_set:
+    - 3_Mille_Neptonin_taskille: B
+  - slot_was_set:
+    - requested_slot: 4_Saako_lounaalle
+  - slot_was_set:
+    - 4_Saako_lounaalle: B
+  - slot_was_set:
+    - requested_slot: 5_Saako_saapuneet_kansioon
+  - slot_was_set:
+    - 5_Saako_saapuneet_kansioon: A
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_exam_form
+  - slot_was_set:
+    - 1_milloin_aamustartti_alkaa: null
+  - slot_was_set:
+    - 2_kuka_vetää_aamustartin: null
+  - slot_was_set:
+    - 3_Mille_Neptonin_taskille: null
+  - slot_was_set:
+    - 4_Saako_lounaalle: null
+  - slot_was_set:
+    - 5_Saako_saapuneet_kansioon: null
+  - slot_was_set:
+    - exam_score: 4
+  - slot_was_set:
+    - new_employee_exam_passed: true
+  - intent: activate_exam_form
+  - action: utter_activate_exam_form
+  - action: exam_form
+  - active_loop: exam_form
+  - slot_was_set:
+    - requested_slot: 1_milloin_aamustartti_alkaa
+- story: Story from Conversation ID ad2cdb1242464a71bfb4e4163fed5dd5
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: activate_new_supplier_form
+  - action: utter_activate_new_supplier_form
+  - action: new_supplier_form
+  - active_loop: new_supplier_form
+  - slot_was_set:
+    - requested_slot: 2_y_tunnus
+  - intent: nlu_fallback
+  - action: new_supplier_form
+  - slot_was_set:
+    - 2_y_tunnus: 5445673-4
+  - slot_was_set:
+    - requested_slot: 9_mitä_tavaraa_tai_palvelua_tilataan
+  - intent: nlu_fallback
+  - action: new_supplier_form
+  - slot_was_set:
+    - 9_mitä_tavaraa_tai_palvelua_tilataan: Chatbot
+  - slot_was_set:
+    - requested_slot: a_millä_euromäärällä_ollaan_tilaamassa
+  - intent: nlu_fallback
+  - action: new_supplier_form
+  - slot_was_set:
+    - a_millä_euromäärällä_ollaan_tilaamassa: '10000'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_new_supplier_form
+  - intent: save_new_supplier_form
+  - action: utter_save_new_supplier_form
+  - intent: activate_new_supplier_form
+  - action: utter_activate_new_supplier_form
+  - action: new_supplier_form
+  - active_loop: new_supplier_form
+  - slot_was_set:
+    - a_millä_euromäärällä_ollaan_tilaamassa: '10000'
+  - slot_was_set:
+    - 9_mitä_tavaraa_tai_palvelua_tilataan: Chatbot
+  - slot_was_set:
+    - 2_y_tunnus: 5445673-4
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_new_supplier_form
+  - intent: delete_new_supplier_form
+  - action: action_delete_new_supplier_form
+  - intent: activate_new_supplier_form
+  - action: utter_activate_new_supplier_form
+  - action: new_supplier_form
+  - active_loop: new_supplier_form
+  - slot_was_set:
+    - requested_slot: 2_y_tunnus
+  - intent: nlu_fallback
+  - action: new_supplier_form
+  - slot_was_set:
+    - 2_y_tunnus: 4356735-3
+  - slot_was_set:
+    - requested_slot: 9_mitä_tavaraa_tai_palvelua_tilataan
+  - intent: nlu_fallback
+  - action: new_supplier_form
+  - slot_was_set:
+    - 9_mitä_tavaraa_tai_palvelua_tilataan: Chatbot
+  - slot_was_set:
+    - requested_slot: a_millä_euromäärällä_ollaan_tilaamassa
+  - intent: nlu_fallback
+  - action: new_supplier_form
+  - slot_was_set:
+    - a_millä_euromäärällä_ollaan_tilaamassa: '100000'
   - slot_was_set:
     - requested_slot: null
   - active_loop: null

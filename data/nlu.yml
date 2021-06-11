@@ -21,23 +21,6 @@ nlu:
     - Moi Moi
     - Hei hei
     - Kiitos hei
-- intent: affirm
-  examples: |
-    - Joo
-    - y
-    - todellakin
-    - tietysti
-    - se kuulostaa hyvältä
-    - oikea
-- intent: deny
-  examples: |
-    - ei
-    - n
-    - ei koskaan
-    - En usko
-    - älä pidä siitä
-    - ei todellakaan
-    - ei oikeastaan
 - intent: bot_challenge
   examples: |
     - Oletko botti?
@@ -205,6 +188,18 @@ nlu:
     - Tilasin tuotteita varaston kautta, miten reklamaatio tehdään?
     - Tilasin varaston kautta tuotteita, voitko kertoa miten teen reklamaation niistä?
     - Miten reklamaatio tehdään siinä tapauksessa kun tuotteet on tilattu varaston kautta?  
+    - Haluaisin tehdä reklamaation varaston kautta tilatuista tuotteista.
+    - Miten voin tehdä reklamaation varaston kautta tilatusta tuotteesta?
+    - Tilasin tuotteita varaston kautta, miten reklamaatio tehdään?
+    - Tilasin varaston kautta tuotteita, voitko kertoa miten teen reklamaation niistä?
+    - Miten reklamaatio tehdään siinä tapauksessa kun tuotteet on tilattu varaston kautta?
+    - Miten rekalamaation kauttakulkutuotteelle tehdään?
+    - Miten teen rekalamaation kauttakulkutuotteelle?
+    - Miten voi tehdä rekalamaation kauttakulkutuotteelle?
+    - Haluan tehdä rekalamaation kauttakulkutuotteelle
+    - Haluaisin tehdä rekalamaation kauttakulkutuotteelle
+    - rekalamaatio kauttakulkutuotteelle
+    - reklamaatio
 - intent: ask_supply_chain_login_e_shop_supply_orders_delivery_methods
   examples: |
     - Mitkä ovat verkkokaupan tarviketilauksien toimitustavat?
@@ -243,6 +238,7 @@ nlu:
     - Haluan täyttää uuden toimittajan perustietolomakkeen.
     - Voitko antaa minulle uuden toimittajan perustietolomakkeen täytettäväksi?
     - En löydä perustietolomaketta johon voin täyttää uuden toimittajan tiedot.
+    
 - intent: show_options
   examples: |
     - Mitä vaihtoehtoja on?
@@ -258,6 +254,8 @@ nlu:
     - Olen uusi työntekijä, mistä löydän tietoa asiakaspalvelun edustajan tehtävistä?
     - Olen vasta aloittanut työt. Voitko esitellä minulle asiakaspalvelun edustajan työtehtäviä?
     - Minä olen uusi työntekijä ja tarvitsen jonkun esittelemään minulle tehtäväni.
+    - Olen uusi työntekijä
+    - Minä olen uusi työntekijä
 - intent: activate_exam_form
   examples: |
     - Haluan suorittaa kokeen uudelle työntekijälle.
@@ -265,6 +263,24 @@ nlu:
     - Miten voin suorittaa kokeen uudelle työntekijälle?
     - Voinko suorittaa kokeen uudelle työntekijälle?
     - Minulla on uusi työntekijä, jonka haluan suorittavan kokeen.
+    - Haluan ottaa testin uudestaan
+    - Haluan ottaa testin uudelleen
+    - Haluaisin ottaa testin uudestaan
+    - Haluaisin ottaa testin uudelleen
+    - Haluaisin tehdä testin uudestaan
+    - Haluaisin tehdä testin uudelleen
+    - Haluan ottaa kokeen uudestaan
+    - Haluan tehdä kokeen uudestaan
+    - Haluan ottaa kokeen uudelleen
+    - Uusi koe
+- intent: thank
+  examples: |
+    - kiitos
+    - Kiitoksia
+    - Kiitokset
+    - Kiitos paljon
+    - Kiitti
+    - Plajon kiitoksia
 - intent: central_product_complain
   examples: |
     - Miten teen reklamaation keskustavaratuotteesta?
@@ -279,6 +295,16 @@ nlu:
     - Minun pitäisi tehdä tuotepalautus kauttakulkutuotteesta.
     - Miten palautan kauttakulkutuotteen?
     - Miten tuotepalautus tehdään kauttakulkutuotteen tapauksessa?
+    - Miten teen tuotepalautuksen kauttakulkutuotteelle?
+    - Voinko tehdä palautuksen kauttakulkutuotteelle?
+    - Minun pitäisi tehdä tuotepalautus kauttakulkutuotteesta.
+    - Miten palautan kauttakulkutuotteen?
+    - Miten tuotepalautus tehdään kauttakulkutuotteen tapauksessa?
+    - Haluan tehdä tuotepalautus tehdään kauttakulkutuotteen tapauksessa
+    - Haluaisin tehdä tuotepalautus tehdään kauttakulkutuotteen tapauksessa
+    - Miten voi tehdä tuotepalautus tehdään kauttakulkutuotteen tapauksessa?
+    - tuotepalautus kauttakulkutuotteen
+    - tuotepalautus
 - intent: receive_direct_delivery_product   
   examples: |
     - Mitä minun pitää huomioida suoratoimitustuotteen vastaanottamisessa?
@@ -286,3 +312,21 @@ nlu:
     - Mitä minun on huomioitava kun vastaanotan suoratoimitustuotteen?
     - Olen vastaanottamassa suoratoimitustuotetta, miten toimin?
     - Minun pitää vastaanottaa suoratoimitustuote.
+    - Mitä minun pitää huomioida suoratoimitustuotteen vastaanottamisessa?
+    - Miten vastaanotan suoratoimitustuotteen?
+    - Mitä minun on huomioitava kun vastaanotan suoratoimitustuotteen?
+    - Olen vastaanottamassa suoratoimitustuotetta, miten toimin?
+    - Minun pitää vastaanottaa suoratoimitustuote
+    - Mitä on huomioitettava suoratoimitustuotteen vastaanottamisessa?
+    - suoratoimitustuotteen vastaanottamisessa
+    - suoratoimitustuote vastaanotto
+    - suoratoimitustuote vastaanotto huomoida
+- intent: ask_joke
+  examples: |
+    - intent joke:
+    - kerrotko vitsin
+    - kerro vitsi
+    - haluan kuulla vitsin
+    - vitsi
+    - haluan nauraa
+    - vitsit  

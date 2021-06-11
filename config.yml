@@ -16,9 +16,9 @@ pipeline:
     max_ngram: 4
   - name: custom_components.fasttext_featurizer.FastTextFeaturizer
     cache_dir: "./pretrained/"
-    file: "cc.fi.300.bin"  
+    file: "cc.fi.300.bin"    
   - name: DIETClassifier
-    epochs: 100
+    epochs: 100 
   - name: custom_components.fasttext_language_fallback.FasttextLanguageFallbackClassifier
     expected_language: fi
     intent_triggered: non_finnish
@@ -27,12 +27,16 @@ pipeline:
     min_chars: 8
     min_tokens: 2
     threshold: 0.4
+  - name: RegexEntityExtractor  
+    case_sensitive: False
+    use_regexes: True
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100
+  # - name: custom_components.sentiment_analyzer.SentimentAnalyzer   
   - name: FallbackClassifier
     threshold: 0.69
-    ambiguity_threshold: 0.1
+    ambiguity_threshold: 0.05
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
