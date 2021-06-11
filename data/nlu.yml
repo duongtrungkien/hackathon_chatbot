@@ -330,3 +330,20 @@ nlu:
     - vitsi
     - haluan nauraa
     - vitsit  
+- intent: negative_sentence
+  examples: |
+    - Minä olen vihäinen
+    - Minulla on ongelmia
+    - Minulla on ongelmia
+    - Vihäinun
+    - Kamala
+    - Huono kokemus
+    - Minä suutun
+    - nyt harmittaa
+    - minua harmittaa
+    - mitä ihmettä
+    - onpa kummallista
+    - just jo
+    - tämä on typerää
+    - ei ole kivaa
+    - ei ole hauskaa    

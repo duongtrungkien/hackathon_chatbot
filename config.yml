@@ -9,6 +9,7 @@ pipeline:
   - name: WhitespaceTokenizer
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
+  
   - name: CountVectorsFeaturizer
   - name: CountVectorsFeaturizer
     analyzer: char_wb
@@ -32,11 +33,12 @@ pipeline:
     use_regexes: True
   - name: EntitySynonymMapper
   - name: ResponseSelector
-    epochs: 100
-  # - name: custom_components.sentiment_analyzer.SentimentAnalyzer   
+    epochs: 100  
   - name: FallbackClassifier
     threshold: 0.69
     ambiguity_threshold: 0.05
+  # - name: custom_components.sentiment_analyzer.SentimentAnalyzer
+  #   intent_triggered: negative_sentence   
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/

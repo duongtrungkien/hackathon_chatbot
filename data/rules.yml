@@ -71,3 +71,8 @@ rules:
   - slot_was_set:
     - requested_slot: null 
   - action: action_submit_exam_form  
+
+- rule: negative_sentence
+  steps:
+  - intent: negative_sentence
+  - action: utter_negative_sentence
